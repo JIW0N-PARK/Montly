@@ -6,3 +6,29 @@ body {
 a {
   color: #00B7FF;
 }
+
+#navbar-nav {
+  margin-top: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+#navbar-nav nav li a{
+  color: #373a3c !important;
+}
+
+#nav-link {
+  display: inline-block;
+}
+
+#main-container {
+  margin-top: 60px;
+}
+
+#main-container h1 {
+  color: #343a40;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: -.4px;
+  text-align: left;
+}

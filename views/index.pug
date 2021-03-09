@@ -5,6 +5,37 @@ extends layout
 //-     .container
 
 block content
-  .container
-    h1= title
-    p Welcome to #{title}
+  #main-container.container-lg
+    .container
+      h1 어디로 떠나세요?
+    .container 
+      #carouselExample(class="carousel slide" data-ride="carousel")
+        ul.carousel-indicators 
+          li.active(data-target="#carouselExample" data-slide-to="0")
+          li(data-target="#carouselExample" data-slide-to="1")
+          li(data-target="#carouselExample" data-slide-to="2")
+
+        .carousel-inner
+          .carousel-item.active
+            img(src=".." width="1100" height="500" alt="...")
+          .carousel-item 
+            img(src=".." width="1100" height="500" alt="...")
+          .carousel-item 
+            img(src=".." width="1100" height="500" alt="...")
+            //- .row 
+            //-   .col col1
+            //-   .col col2
+            //-   .col col3
+            //-   .col col4
+        
+        a.carousel-control-prev(href="#carouselExample" role="button" data-slide="prev")
+          span.carousel-control-prev-icon(aria-hidden="true")
+          sapn.sr-only Previous
+        a.carousel-control-prev(href="#carouselExample" role="button" data-slide="next")
+          span.carousel-control-next-icon(aria-hidden="true")
+          sapn.sr-only Next
+
+  script.
+    $(function() {
+      $('.carousel').carousel()
+    })
