@@ -12,7 +12,10 @@ html
     script(src="https://code.jquery.com/jquery-3.6.0.min.js", integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=", crossorigin="anonymous")
   body
     block top-nav
-      include ./includes/topnav
+      if main
+        include ./includes/topnav
+      else 
+        include ./includes/_topnav
 
     block alerts
       // 여기에 알림 메시지

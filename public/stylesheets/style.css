@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 0px 50px 50px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -46,4 +46,34 @@ a {
 
 #signin-col div {
   margin: 10px;
+}
+
+#email-sign-col {
+  border: 1px solid #dee2e6;
+  padding: 50px;
+  font-size: smaller;
+}
+
+#check-box {
+  border: 1px solid #dee2e6;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+#check-box .custom-control {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#label-signup {
+  font-size: x-small;
+}
+
+#email-signin-check {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#yet {
+  padding-top: 20px;
 }
