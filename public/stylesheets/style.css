@@ -32,3 +32,18 @@ a {
   letter-spacing: -.4px;
   text-align: left;
 }
+
+#signin-col {
+  border: 1px solid #dee2e6;
+  text-align: center;
+  padding: 50px;
+}
+
+#signin-container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#signin-col div {
+  margin: 10px;
+}
