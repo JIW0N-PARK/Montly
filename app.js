@@ -3,12 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { Sequelize } = require('sequelize');
+var dbConfig = require('./config/config.json');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var articlesRouter = require('./routes/articles');
 
 var app = express();
+
+//database connection
+const sequelize = new Sequelize(`mysql://${dbConfig.mysql.username}:${dbConfig.mysql.password}@${dbConfig.mysql.host}:${dbConfig.mysql.port}/${dbConfig.mysql.dbName}`);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

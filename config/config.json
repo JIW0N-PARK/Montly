@@ -1,0 +1,11 @@
+{
+  "mysql": {
+    "username": "root",
+    "password": 1029,
+    "dbName": "test",
+    "host": "localhost",
+    "port": 3306,
+    "maxIdleConns": 10,
+    "maxOpenConns": 10
+  }
+}
