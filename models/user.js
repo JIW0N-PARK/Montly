@@ -1,7 +1,10 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('mysql::memory:');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const db = require('./index');
+const sequelize = db.sequelize;
 
-const User = sequelize.define('User', {
+class User extends Model {}
+
+User.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -14,6 +17,10 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false
   }
+}, {
+  sequelize,
+  modelName: 'User',
+  tableName: 'users'
 });
 
 module.exports = User;

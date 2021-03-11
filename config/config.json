@@ -1,10 +1,11 @@
 {
-  "mysql": {
+  "development": {
     "username": "root",
-    "password": 1029,
-    "dbName": "test",
+    "password": "1029",
+    "dbName": "myfaketrip",
     "host": "localhost",
-    "port": 3306,
+    "port": "3306",
+    "dialect": "mysql",
     "maxIdleConns": 10,
     "maxOpenConns": 10
   }

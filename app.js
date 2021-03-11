@@ -3,8 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const { Sequelize } = require('sequelize');
-var dbConfig = require('./config/config.json');
+const { sequelize } = require('./models');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,12 +11,29 @@ var articlesRouter = require('./routes/articles');
 
 var app = express();
 
-//database connection
-const sequelize = new Sequelize(`mysql://${dbConfig.mysql.username}:${dbConfig.mysql.password}@${dbConfig.mysql.host}:${dbConfig.mysql.port}/${dbConfig.mysql.dbName}`);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// Testing database connection?
+
+// Version.1 - 테이블 없으면 테이블 생성한다고 계속 log 보냄;
+// sequelize.sync({ force: false })
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//   }).catch((err) => {
+//     console.log('Unable to connect to the database:', err);
+//   });
+async function connectionTesting() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+connectionTesting();
 
 app.use(logger('dev'));
 app.use(express.json());
