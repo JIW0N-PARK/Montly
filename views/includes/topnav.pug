@@ -10,12 +10,24 @@ header
         
       #navbarNav.collapse.navbar-collapse
         ul.navbar-nav.ml-auto
-          li.nav-item
-            a.nav-link(href="#") 파트너 등록하기
-          li.nav-item
-            a.nav-link(href="/users/sign_in") 로그인
-          li.nav-item 
-            a.btn.btn-outline-primary(href='/users/sign_up') 회원가입
+          if (!currentUser)
+            li.nav-item
+              a.nav-link(href="#") 파트너 등록하기
+            li.nav-item
+              a.nav-link(href="/users/sign_in") 로그인
+            li.nav-item 
+              a.btn.btn-outline-primary(href='/users/sign_up') 회원가입
+          else 
+            li.nav-item
+              a.nav-link(href="#") 위시리스트
+            li.nav-item
+              a.nav-link(href="#") 내 여행
+            li.nav-item 
+              a.nav-link(href="#") 메세지
+            li.nav-item 
+              a.nav-link(href="#") 알림
+            li.nav-item 
+              a.nav-link(href="#") 프로필
   
   #navbar-nav.container-lg
     nav.nav

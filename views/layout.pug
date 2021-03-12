@@ -17,7 +17,13 @@ html
       else 
         include ./includes/_topnav
 
-    block alerts
-      // 여기에 알림 메시지
+    if flashMessages
+      each texts, type in flashMessages
+        .container
+          .alert.alert-dismissible.fade.show(class=`alert-${type}`)
+            each msg in texts
+              | #{msg} 
+            button.close(type='button', data-dismiss='alert', aria-label='close')
+              span(aria-hidden='true') &times;
 
     block content

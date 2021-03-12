@@ -8,6 +8,10 @@ function generateHash(password){
   return bcrypt.hash(password, 10);
 }
 
+function comparePassword(password, hash){
+  return bcrypt.compare(password, hash);
+}
+
 function validateEmail(email){
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
@@ -57,10 +61,6 @@ router.get('/sign_in', (req, res) => {
   res.render('users/signin', {});
 });
 
-router.get('/email_sign_in', (req, res) => {
-  res.render('users/email_signin', {});
-});
-
 router.get('/sign_up', (req, res) => {
   res.render('users/signup', {});
 });
@@ -69,16 +69,36 @@ router.get('/email_sign_up', (req, res) => {
   res.render('users/email_signup', {});
 });
 
+router.route('/email_sign_in')
+  .get((req, res) => {
+    res.render('users/email_signin', {});
+  })
+  .post(catchErrors(async (req, res, next) => {
+    var user = await User.findOne({ where: { email: req.body.email } });
+    if(!user){
+      req.flash('danger', 'Not exist user.');
+      return res.redirect('back');
+    }
+    if(await !comparePassword(req.body.password, user.password)){
+      req.flash('danger', 'Passsword do not match.');
+      return res.redirect('back');
+    }
+    req.session.user = user;
+    console.log('*********THIS IS SESSION'+req.session.user);
+    req.flash('success', '로그인 되었습니다!');
+    return res.redirect('/');
+  }));
+
 router.post('/new', catchErrors(async (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body);
   var err = validateForm(req.body);
   if(err){
-    console.log('danger : '+err);
+    req.flash('danger', err);
     return res.redirect('back');
   }
   var user = await User.findOne({email: req.body.email});
   if(user) {
-    console.log('danger : 이미 존재하는 이메일입니다.');
+    req.flash('danger', '이미 존재하는 이메일입니다.');
     return res.redirect('back');
   }
   var password = await generateHash(req.body.password);
@@ -87,7 +107,7 @@ router.post('/new', catchErrors(async (req, res, next) => {
     email: req.body.email,
     password: password
   });
-  console.log('success : Registered successfully. Please sign in.');
+  req.flash('success', 'Registered successfully. Please sign in.');
   res.redirect('/');
 }));
 

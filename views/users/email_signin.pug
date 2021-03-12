@@ -5,13 +5,13 @@ block content
     .row 
       .col
       #email-sign-col.col 
-        form(action='/users/verifications/all', method='POST') 
+        form(action='/users/email_sign_in                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ', method='POST') 
           .form-group 
             label(for="email") 이메일 *
-            input.form-control(placeholder="ID@example.com")
+            input.form-control(type='text', id='email', name='email', placeholder="ID@example.com")
           .form-group 
             label(for="password") 비밀번호 *
-            input.form-control(placeholder="영문, 숫자, 특수문자 2가지 조합 6~15자")
+            input.form-control(type='password', id='password', name='password', placeholder="영문, 숫자, 특수문자 2가지 조합 6~15자")
           div(id="email-signin-check")
             .custom-control.custom-checkbox
               input(type="checkbox" class="custom-control-input" id="customCheck1")
