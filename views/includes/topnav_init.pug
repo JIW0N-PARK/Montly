@@ -1,5 +1,5 @@
 header
-  nav.navbar.sticky-top.navbar-expand-lg.navbar-light(style="background-color: #ffffff; margin-top: 10px;")
+  nav.navbar.static-top.navbar-expand-lg.navbar-light(style="background-color: #ffffff; margin-top: 10px;")
     .container-lg
       a.navbar-brand(href="/") myfaketrip
       button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
@@ -20,15 +20,14 @@ header
   #navbar-nav.container-lg
     nav.nav
       li.nav-item
-        a.nav-link(href="/" id="nav-link") 홈
-      li.nav-item
+        i.fas.fa-plane-departure(style="vertical-align: middle;")
         a.nav-link(href="#" id="nav-link") 항공권
       li.nav-item 
+        i.fas.fa-hotel
         a.nav-link(href="#" id="nav-link") 숙소
       li.nav-item
+        i.fas.fa-car 
         a.nav-link(href="#" id="nav-link") 렌터카 · 교통
       li.nav-item 
+        i.fas.fa-ticket-alt
         a.nav-link(href="#" id="nav-link") 투어 · 티켓
-
-
-        

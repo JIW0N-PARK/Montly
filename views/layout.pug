@@ -24,7 +24,10 @@ html
       if currentUser
         include ./includes/topnav
       else 
-        include ./includes/_topnav
+        include ./includes/topnav_init
 
     block content
+
+    block footer
+      include ./includes/footer
   

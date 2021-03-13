@@ -113,4 +113,10 @@ router.post('/new', catchErrors(async (req, res, next) => {
   res.redirect('/');
 }));
 
+router.get('/sign_out', (req, res, next) => {
+  delete req.session.user;
+  req.flash('success', 'Successfully signed out.');
+  res.redirect('/');
+});
+
 module.exports = router;
