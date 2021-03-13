@@ -74,18 +74,20 @@ router.route('/email_sign_in')
     res.render('users/email_signin', {});
   })
   .post(catchErrors(async (req, res, next) => {
-    var user = await User.findOne({ where: { email: req.body.email } });
+    const user = await User.findOne({ where: { email: req.body.email } });
     if(!user){
       req.flash('danger', 'Not exist user.');
       return res.redirect('back');
     }
-    if(await !comparePassword(req.body.password, user.password)){
+
+    const compare = await comparePassword(req.body.password, user.password);
+    if(!compare){
       req.flash('danger', 'Passsword do not match.');
       return res.redirect('back');
     }
-    req.session.user = user;
-    console.log('*********THIS IS SESSION'+req.session.user);
-    req.flash('success', '로그인 되었습니다!');
+
+    req.session.user = user.email;
+    req.flash('success', 'Welcome!');
     return res.redirect('/');
   }));
 

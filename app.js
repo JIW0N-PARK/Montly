@@ -50,15 +50,18 @@ app.use(session({
 }));
 app.use(flash());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/articles', articlesRouter);
-
 app.use(function(req, res, next) {
   res.locals.currentUser = req.session.user;
   res.locals.flashMessages = req.flash();
   next();
 });
+
+
+
+// Route
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/articles', articlesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
