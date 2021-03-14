@@ -1,4 +1,4 @@
-body {
+body .main {
   padding: 0px 50px 50px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -76,4 +76,8 @@ a {
 
 #yet {
   padding-top: 20px;
+}
+
+.col-md-2 {
+  min-height: 657px;
 }

@@ -10,6 +10,7 @@ const { sequelize } = require('./models');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var articlesRouter = require('./routes/articles');
+var partnersRouter = require('./routes/partners');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use(flash());
 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.session.user;
+  res.locals.currentPartner = req.session.partner;
   res.locals.flashMessages = req.flash();
   next();
 });
@@ -62,6 +64,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/articles', articlesRouter);
+app.use('/partners', partnersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
