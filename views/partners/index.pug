@@ -2,4 +2,18 @@ extends layout
 
 block content
   .container 
-    h1 HOME
+    a(href="/") HOME
+    #partnerMain.container 
+      div.header
+        h5 파트너 등록
+      div 
+        h6 파트너 유형을 선택해주세요.
+        .card.text-center
+          h5.card-header 개인 파트너
+          .card-body
+            p.card-text 혼자 활동하는 파트너
+            p.card-text 여러 명이 함께 활동하는 팀 파트너
+            p.card-text 사업자 등록을 준비 중인 스냅, 클래스 파트너
+            p.card-text 민박 파트너
+            a(href="/partners/new" class="btn btn-primary") Go somewhere
+          .card-footer.text-muted 2 days ago

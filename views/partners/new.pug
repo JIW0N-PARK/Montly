@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container 
+    a(href="/") HOME
+    .row 
+      .col-8 
+
+        #partnerMain.container 
+          div.header
+            h5 개인 파트너 등록
+          div
+            form(action='/partners/new', method='POST') 
+              .form-group 
+                label(for="kakaoID") 카카오톡 ID *
+                input.form-control(type='text', id='kakaoID', name='kakaoID')
+              .form-group 
+                label(for="intro") 소개 *
+                textarea.form-control(rows='5', id='intro', name='intro', placeholder="예시) 안녕하세요 한국 서울에 거주하다가...")
+            button.btn.btn-info(type="submit") 입력완료
+
+      .col-4
+        #partnerMain.container 
+          div.header
+            h5 마이페이크트립 파트너가 되면 이런 점이 좋습니다 
+            p 처음 파트너 활동을 시작하시는 분들은,
+            p 손쉽게 나만의 상품을 기획하여 바로 판매를 시작할 수 있습니다.
+            p 상품 판매 경험이 있으신 분들은
+            p 편리한 정산 및 예약 관리 시스템을 통해 손쉬운 운영이 가능하고,
+            p 마이페이크트립이 가진 다양한 마케팅 채널을 통해 매출을 극대화시킬 수 있습니다.
+          div
+            p 자주 묻는 파트너 질문
