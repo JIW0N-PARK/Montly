@@ -1,25 +1,31 @@
 nav.col-md-2.d-none.d-md-block.bg-dark.sidebar
   .sidebar-fixed
     ul.nav.flex-column
-      li.nav-item
+      if (!currentPartner)
+        li.nav-item
         a.nav-link.active(href="#")
-          span(data-feather="home") Dashboard 
+          span(data-feather="home") 가이드 블로그 
           span.sr-only (current)
-      li.nav-item
-        a.nav-link(href="#")
-          span(data-feather="file") Orders
-      li.nav-item
-        a.nav-link(href="#")
-          span(data-feather="shopping-cart") Products
-      li.nav-item
-        a.nav-link(href="#")
-          span(data-feather="users") Customers
-      li.nav-item
-        a.nav-link(href="#")
-          span(data-feather="bar-chart-2") Reports
-      li.nav-item
-        a.nav-link(href="#")
-          span(data-feather="layers") Integrations
+      else
+        li.nav-item
+          a.nav-link.active(href="#")
+            span(data-feather="home") 대시보드 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href="#")
+            span(data-feather="file") 투어예약관리
+        li.nav-item
+          a.nav-link(href="#")
+            span(data-feather="shopping-cart") 일정관리
+        li.nav-item
+          a.nav-link(href="#")
+            span(data-feather="users") 후기 관리
+        li.nav-item
+          a.nav-link(href="#")
+            span(data-feather="bar-chart-2") 상품 관리
+        li.nav-item
+          a.nav-link(href="#")
+            span(data-feather="layers") 정산 관리
 
     h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
       span Saved reports

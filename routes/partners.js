@@ -7,7 +7,10 @@ router.get('/', (req, res, next) => {
   if(req.session.user == null){
     return res.redirect('/users/sign_in');
   }
-  res.render('partners/index');
+  else if(req.session.partner == null){
+    res.render('partners/index');
+  }
+  res.render('partners/dashboard');
 });
 
 router.get('/new', (req, res, next) => {
