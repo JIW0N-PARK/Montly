@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Partner = require('../models/partner');
 const catchErrors = require('../lib/async-error');
 var bcrypt = require('bcrypt');
 
@@ -86,7 +87,10 @@ router.route('/email_sign_in')
       return res.redirect('back');
     }
 
-    req.session.user = user.email;
+    const partner = await Partner.findOne({ where: { user_id: user.id } }); // 파트너 등록이 안 되어 있으면 return null
+
+    req.session.user = user;
+    req.session.partner = partner;
     req.flash('success', 'Welcome!');
     return res.redirect('/');
   }));

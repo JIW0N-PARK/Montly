@@ -34,7 +34,10 @@ header
                   a.dropdown-item(href="#") Another action
                   a.dropdown-item(href="#") Something else here
                   .dropdown-divider
-                  a.dropdown-item(href="#") 파트너 등록하기
+                  if (!currentPartner)
+                    a.dropdown-item(href="/becomepartner") 파트너 등록하기
+                  else 
+                    a.dropdown-item(href="#") 파트너 대시보드
                   a.dropdown-item(href="/users/sign_out") 로그아웃
   
   #navbar-nav.container-lg
