@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Partner = require('../models/partner');
 const catchErrors = require('../lib/async-error');
+var products = require('./products');
 
 router.get('/', (req, res, next) => {
   if(req.session.user == null){
@@ -10,7 +11,7 @@ router.get('/', (req, res, next) => {
   else if(req.session.partner == null){
     res.render('partners/index');
   }
-  res.render('partners/dashboard');
+  res.render('partners/dashboard', {partner: req.session.partner});
 });
 
 router.get('/new', (req, res, next) => {
@@ -28,5 +29,7 @@ router.post('/new', catchErrors(async (req, res, next) => {
   req.flash('success', 'Registered successfully.');
   res.redirect('/');
 }));
+
+router.use('/products', products);
 
 module.exports = router;

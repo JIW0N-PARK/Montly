@@ -9,7 +9,7 @@ const { sequelize } = require('./models');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var articlesRouter = require('./routes/articles');
+// var productsRouter = require('./routes/products');
 var partnersRouter = require('./routes/partners');
 
 var app = express();
@@ -63,8 +63,8 @@ app.use(function(req, res, next) {
 // Route
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/articles', articlesRouter);
 app.use('/partners', partnersRouter);
+// app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

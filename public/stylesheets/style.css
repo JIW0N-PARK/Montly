@@ -79,7 +79,7 @@ a {
 }
 
 .col-md-2 {
-  min-height: 657px;
+  min-height: 665px;
 }
 
 .col-md-9 {
@@ -102,4 +102,8 @@ a {
 
 .card.text-center {
   margin-top: 20px;
+}
+
+#partnerMain .float-right {
+  margin-bottom: 20px;
 }

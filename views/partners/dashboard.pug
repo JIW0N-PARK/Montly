@@ -2,7 +2,11 @@ extends layout
 
 block content
   .container 
-    a(href="/") HOME
+    a(href="/") HOME 
+    span / 대시보드
+    h1  
+      i.far.fa-hand-point-right
+      span #{partner.name} 파트너
     #partnerMain.container 
       div.header
         h5 대시보드

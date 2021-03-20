@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  .container 
+    a(href="/partners") HOME
+    span / 상품 관리
+    #partnerMain.container 
+      .container
+        h5 등록된 상품 
+          span.badge.badge-success 여기에 상품 개수
+      .float-right
+        a.btn.btn-outline-info(href='/partners/products/new')
+          i.fas.fa-plus
+          span  가이드 투어 등록
+      .container
+        table.table
+          thead
+            tr
+              th(scope="col") 상태
+              th(scope="col") 지역
+              th(scope="col") 판매 개시일
+              th(scope="col") 여행 제목
+              th(scope="col") 총 판매 수
+              th(scope="col") #
+          tbody
+            tr
+              th(scope="row")
+                sapn.badge.badge-warning 작성중
+              td Mark
+              td Otto
+              td @mdo
+              td #
+              td #
