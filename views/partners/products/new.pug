@@ -10,7 +10,7 @@ block content
       div.header
         h5 가이드 투어 등록하기
       div
-        form(action='/partners/products/new', method='POST') 
+        form(action='/partners/products/new_basic', method='POST') 
           .form-row
             p 나라/도시 *
             .col-5
@@ -32,16 +32,16 @@ block content
               p
                 small * 상품의 상격과 맞지 않는 카테고리는 수정될 수 있습니다.
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio1" name="categoryRadio1" class="custom-control-input")
+              input(type="radio" id="categoryRadio1" name="guideTour" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio1") 가이드 투어
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio2" name="categoryRadio2" class="custom-control-input")
+              input(type="radio" id="categoryRadio2" name="activity" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio2") 액티비티
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio3" name="categoryRadio3" class="custom-control-input")
+              input(type="radio" id="categoryRadio3" name="snapshot" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio3") 스냅촬영
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio4" name="categoryRadio4" class="custom-control-input")
+              input(type="radio" id="categoryRadio4" name="restaurant" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio4") 레스토랑
             p
               small * 가이드가 동행하며 현지 안내를 하는 비중이 높을 경우 가이드 투어를 선택해주세요.
@@ -50,16 +50,16 @@ block content
             p 언어 *
             .form-row
               .custom-control.custom-checkbox(style="margin-left:9px; margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck1" name='languageCheck1')
+                input(type="checkbox" class="custom-control-input" id="languageCheck1" name='korean')
                 label(class="custom-control-label" for="languageCheck1") 한국어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck2" name='languageCheck2')
+                input(type="checkbox" class="custom-control-input" id="languageCheck2" name='english')
                 label(class="custom-control-label" for="languageCheck2") 영어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck3" name='languageCheck3' disabled)
+                input(type="checkbox" class="custom-control-input" id="languageCheck3" name='french' disabled)
                 label(class="custom-control-label" for="languageCheck3") 프랑스어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck4" name='languageCheck4' disabled)
+                input(type="checkbox" class="custom-control-input" id="languageCheck4" name='japanese' disabled)
                 label(class="custom-control-label" for="languageCheck4") 일본어
             p.mt-4
               small * 투어 진행 시 주로 사용되는 언어를 선택해주세요.
@@ -130,13 +130,13 @@ block content
       var val = $('#selectContry').val()
       if(val =='KR'){
         $('#selectCity').empty();
-        $('#selectCity').append(`<option value='Seoul'>서울</option>`);
-        $('#selectCity').append(`<option value='Jeju'>제주도</option>`);
+        $('#selectCity').append(`<option value='seoul'>서울</option>`);
+        $('#selectCity').append(`<option value='jeju'>제주도</option>`);
       }
       else{
         $('#selectCity').empty();
-        $('#selectCity').append(`<option value='Newyork'>뉴욕</option>`);
-        $('#selectCity').append(`<option value='Sanfrancisco'>샌프란시스코</option>`);
+        $('#selectCity').append(`<option value='newyork'>뉴욕</option>`);
+        $('#selectCity').append(`<option value='sanfrancisco'>샌프란시스코</option>`);
       }
     }
 
