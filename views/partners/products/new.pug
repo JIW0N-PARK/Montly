@@ -14,14 +14,13 @@ block content
           .form-row
             p 나라/도시 *
             .col-5
-              select.form-control(id="selectContry")
-                option(selected) 나라
+              select.form-control(id="selectContry" onchange='setCity()' name='contry')
+                option(selected disabled) 나라
                 option(value='KR') 대한민국
                 option(value='US') 미국
             .col-5
-              select.form-control(id="selectCity")
-                option(selected) 도시
-                option ...
+              select.form-control(id="selectCity" name='city')
+                option(selected disabled) 도시
           hr.my-4
           div
             p 카테고리 *
@@ -33,16 +32,16 @@ block content
               p
                 small * 상품의 상격과 맞지 않는 카테고리는 수정될 수 있습니다.
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio1" name="categoryRadio" class="custom-control-input")
+              input(type="radio" id="categoryRadio1" name="categoryRadio1" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio1") 가이드 투어
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio2" name="categoryRadio" class="custom-control-input")
+              input(type="radio" id="categoryRadio2" name="categoryRadio2" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio2") 액티비티
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio3" name="categoryRadio" class="custom-control-input")
+              input(type="radio" id="categoryRadio3" name="categoryRadio3" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio3") 스냅촬영
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio4" name="categoryRadio" class="custom-control-input")
+              input(type="radio" id="categoryRadio4" name="categoryRadio4" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio4") 레스토랑
             p
               small * 가이드가 동행하며 현지 안내를 하는 비중이 높을 경우 가이드 투어를 선택해주세요.
@@ -51,16 +50,16 @@ block content
             p 언어 *
             .form-row
               .custom-control.custom-checkbox(style="margin-left:9px; margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck1")
+                input(type="checkbox" class="custom-control-input" id="languageCheck1" name='languageCheck1')
                 label(class="custom-control-label" for="languageCheck1") 한국어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck2")
+                input(type="checkbox" class="custom-control-input" id="languageCheck2" name='languageCheck2')
                 label(class="custom-control-label" for="languageCheck2") 영어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck3")
+                input(type="checkbox" class="custom-control-input" id="languageCheck3" name='languageCheck3' disabled)
                 label(class="custom-control-label" for="languageCheck3") 프랑스어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck4")
+                input(type="checkbox" class="custom-control-input" id="languageCheck4" name='languageCheck4' disabled)
                 label(class="custom-control-label" for="languageCheck4") 일본어
             p.mt-4
               small * 투어 진행 시 주로 사용되는 언어를 선택해주세요.
@@ -68,7 +67,7 @@ block content
           div 
             p 여행 제목 *
             input(type="text" class="form-control" id="titleInput" 
-              placeholder="[투어] 상암동(DMC) 방송국 투어 :: 대한민국/서울")
+              placeholder="[투어] 상암동(DMC) 방송국 투어 :: 대한민국/서울" name="title")
             p.mt-4
               small - 여행 주제를 정확하고 간결하게 표현해주세요.
             p
@@ -78,7 +77,7 @@ block content
 
           div.mt-5
             p 한 줄 요약 *
-            input(type="text" class="form-control" id="shortcutInput" 
+            input(type="text" class="form-control" id="summaryInput" name = 'summary'
               placeholder="상암에서 국내 유명 방송국을 가이드의 설명과 함께 구경해봅시다!")
             p.mt-4
               small - 제목과 연결되는 매력 포인트를 작성해주세요.
@@ -87,30 +86,30 @@ block content
 
           div.mt-5
             p 여행 소개 *
-            textarea(class="form-control" id="descriptionInput" rows="10")
+            textarea(class="form-control" id="descriptionInput" name='description' rows="10")
             p.mt-4
               small - 맞춤법이 맞지 않거나 이모티콘 혹은 특수문자를 사용하실 경우 상품 검수 절차로 인해 판매가 늦어질 수 있습니다.
           hr.my-4
           .form-row
             .col-6
               p 여행 규모 *
-              select.form-control(id="selectScale")
+              select.form-control(id="selectScale" name='scale')
                 option(selected, value='private') 단독 프라이빗 투어
                 option(value="group") 그룹 투어
             .col-6
               p 이동 수단 *
-              select.form-control(id="selectVehicle")
+              select.form-control(id="selectVehicle" name='vehicle')
                 option(selected, value='walk') 도보 이동
                 option(value='car') 차량 이동
                 option(value='etc') 그 외
           div.mt-5
             p 여행 사진 *
-            input(type="file" class="form-control-file" id="photoFile")
+            input(type="file" class="form-control-file" id="photoFile" name='photo')
           hr.my-4
           .form-row
             p 예약 가능 시간 설정 *
             .col-8 
-              select.form-control(id="selectTime")
+              select.form-control(id="selectTime" name='time')
                 option(selected, value='36') 36
                 option(value=24) 24
             p.mt-4
@@ -123,6 +122,23 @@ block content
               a.btn.btn-outline-secondary(href='/partners/products') 취소하기
             .col-2
               button(type="submit" class="btn btn-outline-primary") 저장후 다음으로
+
+
+  
+  script.
+    function setCity() {
+      var val = $('#selectContry').val()
+      if(val =='KR'){
+        $('#selectCity').empty();
+        $('#selectCity').append(`<option value='Seoul'>서울</option>`);
+        $('#selectCity').append(`<option value='Jeju'>제주도</option>`);
+      }
+      else{
+        $('#selectCity').empty();
+        $('#selectCity').append(`<option value='Newyork'>뉴욕</option>`);
+        $('#selectCity').append(`<option value='Sanfrancisco'>샌프란시스코</option>`);
+      }
+    }
 
 
           

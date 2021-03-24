@@ -12,7 +12,7 @@ router.get('/new', catchErrors(async (req, res, next) => {
 }));
 
 router.post('/new', catchErrors(async (req, res, next) => {
-  console.log("POST NEW FORM");
+  console.log(req.body);
 }));
 
 module.exports = router;
