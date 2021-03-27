@@ -14,7 +14,7 @@ block content
           .form-row
             p 나라/도시 *
             .col-5
-              select.form-control(id="selectContry" onchange='setCity()' name='contry')
+              select(class='form-control' id="selectContry" onchange='setCity()' name='contry')
                 option(selected disabled) 나라
                 option(value='KR') 대한민국
                 option(value='US') 미국
@@ -32,16 +32,16 @@ block content
               p
                 small * 상품의 상격과 맞지 않는 카테고리는 수정될 수 있습니다.
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio1" name="guideTour" class="custom-control-input")
+              input(type="radio" id="categoryRadio" value="guideTour" name="categoryRadio" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio1") 가이드 투어
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio2" name="activity" class="custom-control-input")
+              input(type="radio" id="categoryRadio" value="activity" name="categoryRadio" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio2") 액티비티
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio3" name="snapshot" class="custom-control-input")
+              input(type="radio" id="categoryRadio" value="snapshot" name="categoryRadio" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio3") 스냅촬영
             .custom-control.custom-radio.my-4
-              input(type="radio" id="categoryRadio4" name="restaurant" class="custom-control-input")
+              input(type="radio" id="categoryRadio" value="restaurant" name="categoryRadio" class="custom-control-input")
               label(class="custom-control-label" for="categoryRadio4") 레스토랑
             p
               small * 가이드가 동행하며 현지 안내를 하는 비중이 높을 경우 가이드 투어를 선택해주세요.
@@ -50,16 +50,16 @@ block content
             p 언어 *
             .form-row
               .custom-control.custom-checkbox(style="margin-left:9px; margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck1" name='korean')
+                input(type="checkbox" class="form-check-input" id="languageCheck1" value='korean' name = "languageCheck")
                 label(class="custom-control-label" for="languageCheck1") 한국어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck2" name='english')
+                input(type="checkbox" class="form-check-input" id="languageCheck2" value='english' name = "languageCheck")
                 label(class="custom-control-label" for="languageCheck2") 영어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck3" name='french' disabled)
+                input(type="checkbox" class="form-check-input" id="languageCheck3" value='french' name = "languageCheck" disabled)
                 label(class="custom-control-label" for="languageCheck3") 프랑스어
               .custom-control.custom-checkbox(style="margin-right: 50px")
-                input(type="checkbox" class="custom-control-input" id="languageCheck4" name='japanese' disabled)
+                input(type="checkbox" class="form-check-input" id="languageCheck4" value='japanese' name = "languageCheck" disabled)
                 label(class="custom-control-label" for="languageCheck4") 일본어
             p.mt-4
               small * 투어 진행 시 주로 사용되는 언어를 선택해주세요.
@@ -104,7 +104,7 @@ block content
                 option(value='etc') 그 외
           div.mt-5
             p 여행 사진 *
-            input(type="file" class="form-control-file" id="photoFile" name='photo')
+            input(type="file" class="form-control-file" id="imageFile" name='image')
           hr.my-4
           .form-row
             p 예약 가능 시간 설정 *
@@ -117,11 +117,11 @@ block content
             p
               small - 가장 기본적인 시간은 36시간 입니다.
           hr.my-4
-          .form-row
-            .col-10
-              a.btn.btn-outline-secondary(href='/partners/products') 취소하기
-            .col-2
-              button(type="submit" class="btn btn-outline-primary") 저장후 다음으로
+        .form-row
+          .col-10
+            a.btn.btn-outline-secondary(href='/partners/products') 취소하기
+          .col-2
+            button(class="btn btn-outline-primary" onclick='validateForm()') 저장후 다음으로
 
 
   
@@ -140,10 +140,14 @@ block content
       }
     }
 
-
-          
-
-            
-
-            
-
+    function validateForm() {
+      var contry = $('#selectContry').val()
+      var category = $('#categoryRadio').val()
+      var language = $('.form-check-input').val()
+      if(contry == null){
+        $('#selectContry').addClass(" is-invalid");
+      }
+      if(category = null){
+        $('#categoryRadio').addClass(" is-invalid");
+      }
+    }

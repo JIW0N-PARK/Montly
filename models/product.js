@@ -10,16 +10,13 @@ Product.init({
     allowNull: false
   },
   basic_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+    type: DataTypes.INTEGER
   },
   course_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+    type: DataTypes.INTEGER
   },
   price_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+    type: DataTypes.INTEGER
   }
 }, {
   sequelize,
