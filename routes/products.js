@@ -5,6 +5,7 @@ var Basic = require('../models/product_basic');
 const catchErrors = require('../lib/async-error');
 
 function setLanguage(languages){
+  console.log(languages);
   var str = '';
   for(var language in languages){
     if(req.body.hasOwnProperty(language)){
@@ -24,11 +25,12 @@ router.get('/new', catchErrors(async (req, res, next) => {
 }));
 
 router.post('/new_basic', catchErrors(async (req, res, next) => {
-  await Basic.create({
+  console.log(req.body);
+  const basic = await Basic.create({
     contry: req.body.contry,
     city: req.body.city,
     category: req.body.categoryRadio,
-    language: setLanguage(req.body.languageCheck),
+    language: setLanguage(req.body.languages),
     title: req.body.title,
     summary: req.body.summary,
     description: req.body.description,
@@ -37,6 +39,12 @@ router.post('/new_basic', catchErrors(async (req, res, next) => {
     image: req.body.image,
     time: req.body.time
   });
+  await Product.create({
+    partner_id: req.session.partner.partner_id,
+    basic_id: basic
+  });
+  req.flash('success', 'Saved successfully.');
+  res.redirect('/partners/products');
 }));
 
 module.exports = router;
