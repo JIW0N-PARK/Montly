@@ -7,18 +7,33 @@ const catchErrors = require('../lib/async-error');
 function setLanguage(languages){
   console.log(languages);
   var str = '';
-  for(var language in languages){
-    if(req.body.hasOwnProperty(language)){
-      str.concat('/', req.body[language]);
-    }
-  }
+  languages.forEach(element => {
+    str += element+"/";
+  });
   console.log(str);
   return str;
 }
 
-router.get('/', (req, res, next) => {
-  res.render('partners/products', {});
-});
+router.get('/', catchErrors(async (req, res, next) => {
+  const {count, list} =  await Product.findAndCountAll({
+    where: {partner_id: req.session.partner.id}
+  });
+  console.log(list);
+  if(list != null){
+    var products = [];
+    list.forEach(item => {
+      console.log("!!!!!!!!!!!!!!!!");
+      console.log(item);
+      const product = Basic.findByPk(item.basic_id);
+      products.push(product);
+    });
+    res.render('partners/products', {count: count, products: products});
+  }
+  else{
+    const products = [];
+    res.render('partners/products', {count: count, products: products});
+  }
+}));
 
 router.get('/new', catchErrors(async (req, res, next) => {
   res.render('partners/products/new');
@@ -40,8 +55,8 @@ router.post('/new_basic', catchErrors(async (req, res, next) => {
     time: req.body.time
   });
   await Product.create({
-    partner_id: req.session.partner.partner_id,
-    basic_id: basic
+    partner_id: req.session.partner.id,
+    basic_id: basic.id
   });
   req.flash('success', 'Saved successfully.');
   res.redirect('/partners/products');

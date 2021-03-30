@@ -7,7 +7,7 @@ block content
     #partnerMain.container 
       .container
         h5 등록된 상품 
-          span.badge.badge-success 여기에 상품 개수
+          span.badge.badge-success #{count}
       .float-right
         a.btn.btn-outline-info(href='/partners/products/new')
           i.fas.fa-plus
@@ -22,12 +22,24 @@ block content
               th(scope="col") 여행 제목
               th(scope="col") 총 판매 수
               th(scope="col") #
-          tbody
+          if count <= 0
+            tbody
             tr
               th(scope="row")
-                sapn.badge.badge-warning 작성중
-              td Mark
-              td Otto
-              td @mdo
-              td #
-              td #
+                sapn.badge.badge-danger 등록 상품 없음
+              td 
+              td 
+              td 
+              td 
+              td 
+          else
+            each product in products
+              tbody
+                tr
+                  th(scope="row")
+                    sapn.badge.badge-warning 작성중
+                  td #{product.city}
+                  td #{product.createdAt}
+                  td #{product.title}
+                  td #
+                  td #
