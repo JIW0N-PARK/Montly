@@ -15,18 +15,17 @@ function setLanguage(languages){
 }
 
 router.get('/', catchErrors(async (req, res, next) => {
-  const {count, list} =  await Product.findAndCountAll({
+  const list =  await Product.findAll({
     where: {partner_id: req.session.partner.id}
   });
-  console.log(list);
+  const count = 100;
   if(list != null){
     var products = [];
-    list.forEach(item => {
-      console.log("!!!!!!!!!!!!!!!!");
-      console.log(item);
-      const product = Basic.findByPk(item.basic_id);
+    list.forEach(catchErrors(async (item) => {
+      const product = await Basic.findByPk(item.dataValues.basic_id);
       products.push(product);
-    });
+    })); // foreach 안에서는 products에 push가 되는데 나오면 안됨. promise all()? 공부 필요
+    console.log(products);
     res.render('partners/products', {count: count, products: products});
   }
   else{
