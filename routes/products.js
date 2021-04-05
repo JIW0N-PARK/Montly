@@ -6,12 +6,18 @@ const catchErrors = require('../lib/async-error');
 
 function setLanguage(languages){
   console.log(languages);
-  var str = '';
-  languages.forEach(element => {
-    str += element+"/";
-  });
-  console.log(str);
-  return str;
+  if(Array.isArray(languages)){
+    var str = '';
+    languages.forEach(element => {
+      str += element+"/";
+    });
+    console.log(str);
+    return str;
+  }
+  else{
+    return languages;
+  }
+  
 }
 
 router.get('/', catchErrors(async (req, res, next) => {
