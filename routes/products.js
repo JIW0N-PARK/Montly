@@ -20,12 +20,11 @@ router.get('/', catchErrors(async (req, res, next) => {
   });
   const count = 100;
   if(list != null){
-    var products = [];
-    list.forEach(catchErrors(async (item) => {
+    const products = [];
+    for(let item of list){
       const product = await Basic.findByPk(item.dataValues.basic_id);
       products.push(product);
-    })); // foreach 안에서는 products에 push가 되는데 나오면 안됨. promise all()? 공부 필요
-    console.log(products);
+    }
     res.render('partners/products', {count: count, products: products});
   }
   else{
