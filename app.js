@@ -58,7 +58,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static((__dirname, '/public/images')));
 
 // Route
 app.use('/', indexRouter);
