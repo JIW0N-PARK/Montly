@@ -13,7 +13,7 @@ block content
           i.fas.fa-plus
           span  가이드 투어 등록
       .container
-        table.table
+        table.table(id="partners_prod_t")
           thead
             tr
               th(scope="col") 상태
@@ -21,25 +21,29 @@ block content
               th(scope="col") 판매 개시일
               th(scope="col") 여행 제목
               th(scope="col") 총 판매 수
-              th(scope="col") #
+              th(scope="col") 
           if count <= 0
             tbody
-            tr
-              th(scope="row")
-                sapn.badge.badge-danger 등록 상품 없음
-              td 
-              td 
-              td 
-              td 
-              td 
+              tr
+                td(scope="row")
+                  sapn.badge.badge-danger 등록 상품 없음
+                td 
+                td 
+                td 
+                td 
+                td 
           else
             each product in products
               tbody
                 tr
-                  th(scope="row")
+                  td(scope="row")
                     sapn.badge.badge-warning 작성중
                   td #{product.city}
                   td #{product.createdAt}
                   td #{product.title}
-                  td #
-                  td #
+                  td 0
+                  td
+                    div 
+                      button.btn.btn-primary.btn-sm 보기
+                      button.btn.btn-info.btn-sm 수정
+                      button.btn.btn-danger.btn-sm 삭제

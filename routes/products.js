@@ -40,7 +40,11 @@ router.get('/', catchErrors(async (req, res, next) => {
 }));
 
 router.get('/new', catchErrors(async (req, res, next) => {
-  res.render('partners/products/new');
+  res.render('partners/products/basic_new');
+}));
+
+router.get('/new_course', catchErrors(async (req, res, next) => {
+  res.render('partners/products/course_new');
 }));
 
 router.post('/new_basic', catchErrors(async (req, res, next) => {

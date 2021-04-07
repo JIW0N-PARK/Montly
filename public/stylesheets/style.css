@@ -107,3 +107,11 @@ a {
 #partnerMain .float-right {
   margin-bottom: 20px;
 }
+
+#partners_prod_t {
+  table-layout: fixed;
+}
+
+#partners_prod_t td {
+  overflow: hidden;
+}
